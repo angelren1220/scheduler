@@ -29,8 +29,8 @@ storiesOf("Button", module)
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
   })
   .add("Unselected", () => <DayListItem name="Monday" spots={5} />)
-  .add("Selected", () => <DayListItem name="Monday" spots={5} selected />)
+  .add("Selected", () => <DayListItem name="Monday" spots={5} selected />) 
   .add("Full", () => <DayListItem name="Monday" spots={0} />)
   .add("Clickable", () => (
-    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5}/>
+    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} />
   ));
