@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "components/Application.scss";
 
@@ -23,10 +23,11 @@ export default function Application(props) {
     },
   ];
 
+  const [day, setDay] = useState("Monday");
+
   return (
     <main className="layout">
       <section className="sidebar">
-        {/* Replace this with the sidebar elements during the "Project Setup & Familiarity" activity. */}
         <img
           className="sidebar--centered"
           src="images/logo.png"
@@ -36,8 +37,8 @@ export default function Application(props) {
         <nav className="sidebar__menu">
           <DayList
             days={days}
-            day={"Monday"}
-            setDay={day => console.log(day)}
+            day={day}
+            setDay={setDay}
           />
         </nav>
         <img
@@ -47,7 +48,6 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
       </section>
 
     </main>
