@@ -174,9 +174,7 @@ storiesOf("Appointment", module)
       message="Could not delete appointment."
       onClose={action("onClose")}
     />
-  ));
-
-storiesOf("Form", module)
+  ))
   .add("Edit", () => (
     <Form
       student="Angel Ren"
