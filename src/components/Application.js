@@ -52,19 +52,22 @@ export default function Application(props) {
       });
   };
 
-  // const cancelInterview = (id) => {
-  //   const appointment = {
-  //     ...state.appointments[id],
-  //     interview: null
-  //   };
+  const cancelInterview = (id) => {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
 
-  //   const appointments = {
-  //     ...state.appointments,
-  //     [id]: appointment
-  //   };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
 
-  //   setState(prev => ({ ...prev, appointments }));
-  // }
+    return axios.delete(`/api/appointments/${id}`)
+    .then(() => {
+      setState(prev => ({ ...prev, appointments }));
+    });
+  }
 
   const appointmentsList = Object.values(dailyAppointments).map((appointment) => {
 
@@ -79,7 +82,7 @@ export default function Application(props) {
       interview={interview}
       interviewers={dailyInterviewers}
       bookInterview={bookInterview}
-      // cancelInterview={cancelInterview}
+      cancelInterview={cancelInterview}
     />);
   });
 
