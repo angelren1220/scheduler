@@ -41,34 +41,18 @@ export function getInterviewersForDay(state, day) {
   return interviewers;
 }
 
-export function updateSpots(state, appointments, id) {
-  // 1. find the day object for today
-  // 2. iterate appointment ids for that day
-  // 3. count ones that have null interviews
+export function updateSpots(state, appointments) {
   const findDay = state.days.find(
     data => data.name === state.day);
 
-  let count = 0;
+  let spots = 0;
 
   findDay.appointments.forEach(id => {
     if (!appointments[id].interview) {
-      count++;
+      spots++;
     }
   });
 
-  // 4. create a new day object with new spot
-  // 5. put the day object in new days array
-  // 6. return days
-
-  const updatedDay = { ...findDay, spots: count };
-
-  const updatedDays = state.days.map((data) => {
-    if (data.name === updatedDay.name) {
-       data = {...updatedDay};
-    }
-    return data;
-  });
-
-  // return an updated days array
-  return updatedDays;
+  const updatedDay = { ...findDay, spots };
+  return state.days.map(data => data.name === state.day ? updatedDay : data);
 };
