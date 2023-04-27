@@ -8,6 +8,7 @@ import {
   getByAltText,
   getByPlaceholderText,
   waitForElement,
+  queryByText,
   fireEvent,
   prettyDOM
 } from "@testing-library/react";
@@ -44,7 +45,14 @@ describe("Application", () => {
   
     fireEvent.click(getByText(appointment, "Save"));
   
-    console.log(prettyDOM(appointment));
+    await waitForElement(() => queryByText(appointment, "Lydia Miller-Jones"));
+    expect(queryByText(appointment, "Saving")).not.toBeInTheDocument(); 
+  
+    const day = getAllByTestId(container, "day").find(day =>
+      queryByText(day, "Monday")
+    );
+    
+    expect(getByText(day, "no spots remaining")).toBeInTheDocument();
   });
   
 });
