@@ -10,6 +10,7 @@ import {
   waitForElement,
   queryByText,
   queryByAltText,
+  queryByDisplayValue,
   fireEvent
 } from "@testing-library/react";
 
@@ -85,7 +86,7 @@ describe("Application", () => {
     expect(getByText(day, "2 spots remaining")).toBeInTheDocument();
   });
 
-  xit("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
+  it("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
     const { container } = render(<Application />);
     
     await waitForElement(() => getByText(container, "Archie Cohen"));
@@ -96,21 +97,21 @@ describe("Application", () => {
   
     fireEvent.click(queryByAltText(appointment, "Edit"));
     
-    fireEvent.change(queryByText(appointment, "Archie Cohen"), {
+    fireEvent.change(queryByDisplayValue(appointment, "Archie Cohen"), {
       target: { value: "Lydia Miller-Jones" }
     });
-  //   fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
+    fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
   
-  //   fireEvent.click(getByText(appointment, "Save"));
+    fireEvent.click(getByText(appointment, "Save"));
   
-  //   await waitForElement(() => queryByText(appointment, "Lydia Miller-Jones"));
-  //   expect(queryByText(appointment, "Saving")).not.toBeInTheDocument(); 
+    await waitForElement(() => queryByText(appointment, "Lydia Miller-Jones"));
+    expect(queryByText(appointment, "Saving")).not.toBeInTheDocument(); 
   
-  //   const day = getAllByTestId(container, "day").find(day =>
-  //     queryByText(day, "Monday")
-  //   );
+    const day = getAllByTestId(container, "day").find(day =>
+      queryByText(day, "Monday")
+    );
     
-  //   expect(getByText(day, "1 spot remaining")).toBeInTheDocument();
+    expect(getByText(day, "1 spot remaining")).toBeInTheDocument();
   });
 
   it("shows the save error when failing to save an appointment", () => {
