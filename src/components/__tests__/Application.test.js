@@ -9,9 +9,11 @@ import {
   getByPlaceholderText,
   waitForElement,
   queryByText,
-  fireEvent,
-  prettyDOM
+  queryByAltText,
+  fireEvent
 } from "@testing-library/react";
+
+import axios from "axios";
 
 import Application from "components/Application";
 
@@ -54,5 +56,68 @@ describe("Application", () => {
     
     expect(getByText(day, "no spots remaining")).toBeInTheDocument();
   });
+
+  it("loads data, cancels an interview and increases the spots remaining for Monday by 1", async () => {
+    const { container } = render(<Application />);
+    
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+    
+    const appointment = getAllByTestId(container, "appointment").find(
+      appointment => queryByText(appointment, "Archie Cohen")
+    );
   
+    fireEvent.click(queryByAltText(appointment, "Delete"));
+    
+    expect(
+      getByText(appointment, "Are you sure to cancel this appointment?")
+      ).toBeInTheDocument();
+    
+    fireEvent.click(queryByText(appointment, "Confirm"));
+
+    expect(getByText(appointment, "Deleting")).toBeInTheDocument();
+
+    await waitForElement(() => getByAltText(appointment, "Add"));
+  
+    const day = getAllByTestId(container, "day").find(day =>
+      queryByText(day, "Monday")
+    );
+    
+    expect(getByText(day, "2 spots remaining")).toBeInTheDocument();
+  });
+
+  xit("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
+    const { container } = render(<Application />);
+    
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+    
+    const appointment = getAllByTestId(container, "appointment").find(
+      appointment => queryByText(appointment, "Archie Cohen")
+    );
+  
+    fireEvent.click(queryByAltText(appointment, "Edit"));
+    
+    fireEvent.change(queryByText(appointment, "Archie Cohen"), {
+      target: { value: "Lydia Miller-Jones" }
+    });
+  //   fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
+  
+  //   fireEvent.click(getByText(appointment, "Save"));
+  
+  //   await waitForElement(() => queryByText(appointment, "Lydia Miller-Jones"));
+  //   expect(queryByText(appointment, "Saving")).not.toBeInTheDocument(); 
+  
+  //   const day = getAllByTestId(container, "day").find(day =>
+  //     queryByText(day, "Monday")
+  //   );
+    
+  //   expect(getByText(day, "1 spot remaining")).toBeInTheDocument();
+  });
+
+  it("shows the save error when failing to save an appointment", () => {
+    axios.put.mockRejectedValueOnce();
+  });
+
+  it("shows the delete error when failing to delete an existing appointment", () => {
+    axios.put.mockRejectedValueOnce();
+  });
 });

@@ -69,8 +69,8 @@ export default function Appointment(props) {
           onSave={save}
         />
       }
-      {mode === SAVING && <Status message={SAVING} />}
-      {mode === DELETE && <Status message={DELETE} />}
+      {mode === SAVING && <Status message={"Saving"} />}
+      {mode === DELETE && <Status message={"Deleting"} />}
       {mode === CONFIRM &&
         <Confirm
           message={"Are you sure to cancel this appointment?"}
