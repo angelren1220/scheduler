@@ -148,7 +148,7 @@ storiesOf("Appointment", module)
   .add("Appointment", () => <Appointment />)
   .add("Appointment with Time", () => <Appointment time="12pm" />)
   .add("Header", () => <Header time="12pm" />)
-  .add("Empty", () => <Empty onAdd={action("setDay")} />)
+  .add("Empty", () => <Empty onAdd={action("onAdd")} />)
   .add("Show", () => (
     <Show 
       student="Lydia Miller-Jones"
@@ -178,7 +178,7 @@ storiesOf("Appointment", module)
   .add("Edit", () => (
     <Form
       student="Angel Ren"
-      interviewer={interviewers[4].id}
+      interviewerID={interviewers[4].id}
       interviewers={interviewers}
       onSave={action("onSave")}
       onCancel={action("onCancel")}
