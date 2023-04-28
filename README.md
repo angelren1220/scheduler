@@ -21,23 +21,23 @@ Interview Scheduler is a Single Page Application(SPA) to track students intervie
 
 ## Final Product
 
-- user can switch bewtten weekdays and view appointments and available spots
+- User can switch bewtten weekdays and view appointments and available spots.
 
 ![](https://github.com/angelren1220/scheduler/blob/master/docs/view.gif)
 
-- user can book an appointment. The form validates the information and then updates data.
+- User can book an appointment. The form validates the information and then updates data.
 
 ![](https://github.com/angelren1220/scheduler/blob/master/docs/add.gif)
 
-- user can cancel an appointment.
+- User can cancel an appointment.
 
 ![](https://github.com/angelren1220/scheduler/blob/master/docs/delete.gif)
 
-- user can edit an appointment.
+- User can edit an appointment. 
 
 ![](https://github.com/angelren1220/scheduler/blob/master/docs/edit.gif)
 
-- if there is an error, edit and cancel will not proceed
+- If there is an error, edit and cancel will not proceed.
 
 ![](https://github.com/angelren1220/scheduler/blob/master/docs/error.gif)
 
