@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Interview Scheduler is a Single Page Application(SPA) to track students interviews built with the latest tools and techniques for optimized user experience. The App allows users to add, edit and delete appointments in real time. It uses React built-in and custom hooks Data is persisted by the API server using a PostgreSQL database. The client application communicates with an API server over HTTP, using the JSON format. Moreover, for quality assurance, the project follows best practices of Test Driven Development (TDD).i.e, individual Component is tested in isolation as well as End-to-End testing is performed.
+Interview Scheduler is a Single Page Application (SPA) designed to optimize user experience when tracking student interviews. The App allows real-time appointment management, with users able to add, edit, and delete appointments seamlessly. The application is built using the latest tools and techniques, including - React's built-in and custom hooks, and is backed by a PostgreSQL database. The client application communicates with an API server using the JSON format over HTTP. Additionally, the project adheres to best practices in Test Driven Development (TDD), with each component tested in isolation, as well as End-to-End - testing for quality assurance.
 
 ## Project Features
 - Interviews can be booked between Monday and Friday.
@@ -57,7 +57,7 @@ npm start
 npm test
 ```
 
-## Running Storybook Visual Testbed
+## Running - Storybook Visual Testbed
 
 ```sh
 npm run storybook
@@ -82,3 +82,32 @@ For full functionality both must run concurrently: the client and the API server
   - copy .env.developement in scheduler-api as .env.test
   - create new database scheduler_test
   - follow the same steps with developement
+
+
+## Project Stack
+- Front-End: - React, Axios, JSX, HTML, SASS, JavaScript
+
+- Back-End: Express, Node.js, PostgreSQL
+
+- - Testing: - Storybook, Webpack Dev Server, Jest, - Testing Library and Cypress
+
+## Dependencies
+- Axios
+- Classnames
+- Normalize.css
+- React
+- React-dom
+- React-scripts
+- Babel/core
+- Storybook/addon-actions
+- Storybook/addon-backgrounds
+- Storybook/addon-links
+- Storybook/addons
+- Storybook/react
+- Testing-library/jest-dom
+- Testing-library/react
+- Testing-library/react-hooks
+- Babel-loader
+- Node-sass
+- Prop-types
+- React-test-renderer
